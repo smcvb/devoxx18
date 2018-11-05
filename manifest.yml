@@ -1,0 +1,8 @@
+---
+applications:
+- name: devoxx
+  path: target/conference-0.0.1-SNAPSHOT.jar
+  instances: 1
+  random-route: true
+#  services:
+#  - mysql
