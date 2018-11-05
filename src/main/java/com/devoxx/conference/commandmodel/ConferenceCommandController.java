@@ -15,6 +15,7 @@ import java.util.UUID;
 public class ConferenceCommandController {
 
     private final CommandGateway commandGateway;
+    private final String conferenceId = UUID.randomUUID().toString();
 
     public ConferenceCommandController(CommandGateway commandGateway) {
         this.commandGateway = commandGateway;
@@ -27,7 +28,6 @@ public class ConferenceCommandController {
 
     @GetMapping
     public void createConference() {
-        String conferenceId = UUID.randomUUID().toString();
         commandGateway.send(new CreateConferenceCommand(conferenceId, "Devoxx Belgium 2018"), LoggingCallback.INSTANCE);
         commandGateway.send(new AddTalkCommand(conferenceId, "Ben", "Awesome PCF Stuff"), LoggingCallback.INSTANCE);
         commandGateway.send(new AddTalkCommand(conferenceId, "Steven", "Awesome Axon Stuff"), LoggingCallback.INSTANCE);
