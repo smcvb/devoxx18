@@ -33,3 +33,5 @@ data class DepositedEvent(
 )
 
 class NotEnoughFundsException : Exception()
+
+class FindAllWalletsQuery
