@@ -30,4 +30,4 @@ data class DepositedEvent(
         val amount: Int
 )
 
-class NotEnoughFoundException : Exception()
+class NotEnoughFundsException : Exception()

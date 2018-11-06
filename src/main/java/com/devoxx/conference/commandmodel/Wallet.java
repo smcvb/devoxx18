@@ -3,7 +3,7 @@ package com.devoxx.conference.commandmodel;
 import com.devoxx.conference.coreapi.CreateWalletCommand;
 import com.devoxx.conference.coreapi.DepositCommand;
 import com.devoxx.conference.coreapi.DepositedEvent;
-import com.devoxx.conference.coreapi.NotEnoughFoundException;
+import com.devoxx.conference.coreapi.NotEnoughFundsException;
 import com.devoxx.conference.coreapi.WalletCreatedEvent;
 import com.devoxx.conference.coreapi.WithdrawCommand;
 import com.devoxx.conference.coreapi.WithdrawnEvent;
@@ -34,10 +34,10 @@ public class Wallet {
     }
 
     @CommandHandler
-    public void handle(WithdrawCommand command) throws NotEnoughFoundException {
+    public void handle(WithdrawCommand command) throws NotEnoughFundsException {
         int amount = command.getAmount();
         if (balance - amount < 0) {
-            throw new NotEnoughFoundException();
+            throw new NotEnoughFundsException();
         }
         AggregateLifecycle.apply(new WithdrawnEvent(walletId, amount));
     }
