@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <name>conference</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Demo project on Spring Boot with Axon about a Wallet</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
