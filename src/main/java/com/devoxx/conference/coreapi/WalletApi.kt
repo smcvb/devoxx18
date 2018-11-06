@@ -1,17 +1,19 @@
 package com.devoxx.conference.coreapi
 
+import org.axonframework.modelling.command.TargetAggregateIdentifier
+
 data class CreateWalletCommand(
         val walletId: String,
         val balance: Int
 )
 
 data class WithdrawCommand(
-        val walletId: String,
+        @TargetAggregateIdentifier val walletId: String,
         val amount: Int
 )
 
 data class DepositCommand(
-        val walletId: String,
+        @TargetAggregateIdentifier val walletId: String,
         val amount: Int
 )
 
