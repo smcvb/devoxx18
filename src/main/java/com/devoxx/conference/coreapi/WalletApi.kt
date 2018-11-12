@@ -7,27 +7,27 @@ data class CreateWalletCommand(
         val balance: Int
 )
 
-data class WithdrawCommand(
+data class DepositCashCommand(
         @TargetAggregateIdentifier val walletId: String,
         val amount: Int
 )
 
-data class DepositCommand(
+data class WithdrawCashCommand(
         @TargetAggregateIdentifier val walletId: String,
         val amount: Int
 )
-
-
 
 data class WalletCreatedEvent(
         val walletId: String,
         val balance: Int
 )
-data class WithdrawnEvent(
+
+data class CashWithdrawnEvent(
         val walletId: String,
         val amount: Int
 )
-data class DepositedEvent(
+
+data class CashDepositedEvent(
         val walletId: String,
         val amount: Int
 )

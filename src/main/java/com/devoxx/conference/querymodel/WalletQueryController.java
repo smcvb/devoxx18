@@ -20,7 +20,6 @@ public class WalletQueryController {
         this.queryGateway = queryGateway;
     }
 
-
     @GetMapping("/wallets")
     public CompletableFuture<List<WalletView>> wallets() {
         return queryGateway.query(new FindAllWalletsQuery(), ResponseTypes.multipleInstancesOf(WalletView.class));

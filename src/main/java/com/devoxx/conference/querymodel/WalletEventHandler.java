@@ -26,5 +26,4 @@ public class WalletEventHandler {
     public List<WalletView> answer(FindAllWalletsQuery query) {
         return walletViewRepository.findAll();
     }
-
 }

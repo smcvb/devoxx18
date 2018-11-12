@@ -1,12 +1,6 @@
 package com.devoxx.conference.commandmodel;
 
-import com.devoxx.conference.coreapi.CreateWalletCommand;
-import com.devoxx.conference.coreapi.DepositCommand;
-import com.devoxx.conference.coreapi.DepositedEvent;
-import com.devoxx.conference.coreapi.NotEnoughFundsException;
-import com.devoxx.conference.coreapi.WalletCreatedEvent;
-import com.devoxx.conference.coreapi.WithdrawCommand;
-import com.devoxx.conference.coreapi.WithdrawnEvent;
+import com.devoxx.conference.coreapi.*;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -29,17 +23,17 @@ public class Wallet {
     }
 
     @CommandHandler
-    public void handle(DepositCommand command) {
-        AggregateLifecycle.apply(new DepositedEvent(walletId, command.getAmount()));
+    public void handle(DepositCashCommand command) {
+        AggregateLifecycle.apply(new CashDepositedEvent(walletId, command.getAmount()));
     }
 
     @CommandHandler
-    public void handle(WithdrawCommand command) throws NotEnoughFundsException {
+    public void handle(WithdrawCashCommand command) throws NotEnoughFundsException {
         int amount = command.getAmount();
         if (balance - amount < 0) {
             throw new NotEnoughFundsException();
         }
-        AggregateLifecycle.apply(new WithdrawnEvent(walletId, amount));
+        AggregateLifecycle.apply(new CashWithdrawnEvent(walletId, amount));
     }
 
     @EventSourcingHandler
@@ -49,12 +43,12 @@ public class Wallet {
     }
 
     @EventSourcingHandler
-    public void on(DepositedEvent event) {
+    public void on(CashDepositedEvent event) {
         balance = balance + event.getAmount();
     }
 
     @EventSourcingHandler
-    public void on(WithdrawnEvent event) {
+    public void on(CashWithdrawnEvent event) {
         balance = balance - event.getAmount();
     }
 }
