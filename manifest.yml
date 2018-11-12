@@ -1,7 +1,7 @@
 ---
 applications:
-- name: devoxx
-  path: target/conference-0.0.1-SNAPSHOT.jar
+- name: wallet
+  path: target/wallet-0.0.1-SNAPSHOT.jar
   instances: 1
   routes:
   - route: wallet.cfapps.io
