@@ -21,11 +21,6 @@ public class WalletCommandController {
         this.commandGateway = commandGateway;
     }
 
-    @GetMapping("/hello")
-    public String helloAntwerp() {
-        return "Hello Antwerp!";
-    }
-
     @GetMapping
     public void createWallet() {
         String walletId = UUID.randomUUID().toString();
