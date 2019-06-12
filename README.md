@@ -6,8 +6,13 @@
 
 ## Abstract
 
-Axon Trader is a new open-source reference architecture that demonstrates how to deliver "evolutionary" microservice applications to production in minutes. 
+Axon Trader is a new open-source reference architecture that demonstrates how to deliver "evolutionary" microservice applications to production in minutes.
 
+This repository provides a demo Wallet application following a similar route as the Axon Trader application,
+ used during a live coding presentation at Devoxx Antwerp 2018.
+ 
+As such, this sample app utilizes both Spring Boot and Axon Framework to provide a small use case of how CQRS,
+ Event Sourcing and DDD can be incorporated. 
 
 ## Demo Commands
 
